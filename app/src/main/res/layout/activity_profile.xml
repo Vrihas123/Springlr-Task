@@ -55,6 +55,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="96dp" />
+    <ImageView
+        android:id="@+id/google_profile_img"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="96dp"/>
 
     <TextView
         android:id="@+id/user_name"

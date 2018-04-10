@@ -24,8 +24,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -62,28 +65,27 @@ public class UserDetailsActivity extends AppCompatActivity {
 
         // get reference to 'users' node
         mFirebaseDatabase = mFirebaseInstance.getReference("users");
-//        mFirebaseAuth = FirebaseAuth.getInstance();
-//        if (mFirebaseUser == null){
-//            Toast.makeText(this,"Not Signed in",Toast.LENGTH_LONG).show();
-//        }
+        // store app title to 'app_title' node
+        mFirebaseInstance.getReference("app_title").setValue("SpringlrTask User Details");
 
+        // app_title change listener
+        mFirebaseInstance.getReference("app_title").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //Log.e(TAG, "App title updated");
+              //  Toast.makeText(UserDetailsActivity.this,"App title updated",Toast.LENGTH_SHORT).show();
+                String appTitle = dataSnapshot.getValue(String.class);
 
-//        authlistener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                FirebaseUser user = firebaseAuth.getCurrentUser();
-//                if (user != null) {
-//                    // User is signed in
-//
-//                } else {
-//                    // User is signed out
-//
-//                }
-//                // ...
-//            }
-//        };
-//        FirebaseAuth.getInstance().addAuthStateListener(authListener);
+                // update toolbar title
+                getSupportActionBar().setTitle(appTitle);
+            }
 
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                //Log.e(TAG, "Failed to read app title value.", error.toException());
+            }
+        });
 
 
         inputUserName.addTextChangedListener(new MyTextWatcher(inputUserName));
@@ -118,9 +120,9 @@ public class UserDetailsActivity extends AppCompatActivity {
         sharedPrefs.setMobile(mobile);
         sharedPrefs.setEmailId(email);
         sharedPrefs.setAddress(address);
-       // createUserWithEmailAndPassword();
+        createUserWithEmailAndPassword();
         writeNewUser(name,mobile,email,address);
-        Toast.makeText(this,"Registration Successfull, proceeding to login page",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Your details are saved successfully!!",Toast.LENGTH_LONG).show();
         Intent i = new Intent(UserDetailsActivity.this, ProfileActivity.class);
         startActivity(i);
         finish();
@@ -129,14 +131,13 @@ public class UserDetailsActivity extends AppCompatActivity {
     public void writeNewUser(String name, String mobile, String email, String address){
        // userId = mFirebaseAuth.getCurrentUser().getUid();
         userId = mFirebaseDatabase.push().getKey();
-       // userId = mobile;
-        Toast.makeText(UserDetailsActivity.this,"userId = "+userId,Toast.LENGTH_LONG).show();
-        UserInformation userInformation = new UserInformation(name,mobile,email,address);
+        //Toast.makeText(UserDetailsActivity.this,"userId = "+userId,Toast.LENGTH_LONG).show();
+        UserInformation userInformation = new UserInformation(sharedPrefs.getUsername(),sharedPrefs.getMobile(),sharedPrefs.getEmail(),sharedPrefs.getAddress());
         mFirebaseDatabase.child(userId).setValue(userInformation);
 
 
     }
-    private void createUserWithEmailAndPassword(){
+    public void createUserWithEmailAndPassword(){
         mFirebaseAuth.createUserWithEmailAndPassword(email, mobile)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -149,8 +150,8 @@ public class UserDetailsActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                           //  Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(UserDetailsActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(UserDetailsActivity.this, "Authentication failed.",
+                            //        Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
 

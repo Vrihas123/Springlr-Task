@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".profile.ProfileActivity">
+        <activity android:name=".profile.ProfileActivity"
+            android:screenOrientation="portrait">
 
         </activity>
 
@@ -35,14 +36,16 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.LoginActivity">
+        <activity android:name=".login.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".user_details.view.UserDetailsActivity">
+        <activity android:name=".user_details.view.UserDetailsActivity"
+            android:screenOrientation="portrait">
 
         </activity>
     </application>

@@ -137,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account);
                 sharedPrefs.setGoogleLogIn(true);
                 sharedPrefs.setLogin(true);
+                sharedPrefs.setPhotoUrl(account.getPhotoUrl().toString());
                 Intent i = new Intent(LoginActivity.this,UserDetailsActivity.class);
                 startActivity(i);
 

@@ -31,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private SharedPrefs sharedPrefs;
     private ProfilePictureView profilePictureView;
-    private ImageView backgroundImage;
+    private ImageView backgroundImage,googleProfilePic;
     private TextView userName,userEmail,userMobile,userAddress;
 
     @Override
@@ -50,6 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
         userMobile = (TextView) findViewById(R.id.user_mobile);
         userEmail = (TextView) findViewById(R.id.user_email);
         userAddress= (TextView) findViewById(R.id.user_address);
+        googleProfilePic = (ImageView) findViewById(R.id.google_profile_img);
         userName.setText(sharedPrefs.getUsername());
         userEmail.setText(sharedPrefs.getEmail());
         userMobile.setText(sharedPrefs.getMobile());
@@ -60,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
             profilePictureView.setProfileId(profile.getId());
         }else{
             sign_out_btn.setVisibility(View.VISIBLE);
+            Glide.with(this).load(sharedPrefs.getPhotoUrl()).into(googleProfilePic);
         }
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -102,5 +104,12 @@ public class ProfileActivity extends AppCompatActivity {
         Intent i = new Intent(ProfileActivity.this, LoginActivity.class);
         startActivity(i);
         finish();
+    }
+    public void onBackPressed(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
+
     }
 }

@@ -18,6 +18,7 @@ public class SharedPrefs {
     private static final String KEY_EMAIL = "email";
     private static final String KEY_MOBILE = "mobile";
     private static final String KEY_ADDRESS = "address";
+    private static final String KEY_GOOGLE_PHOTO = "profile_photo";
     private static final String KEY_FCM = "fcm";
     private static final String KEY_ID = "userId";
     private static final String KEY_ACCESS_TOKEN = "access_token";
@@ -111,6 +112,16 @@ public class SharedPrefs {
     public String getUserId() {
 
         return pref.getString(KEY_ID, "id");
+    }
+    public void setPhotoUrl(String profile_photo) {
+
+        editor.putString(KEY_GOOGLE_PHOTO, profile_photo);
+        editor.commit();
+    }
+
+    public String getPhotoUrl() {
+
+        return pref.getString(KEY_GOOGLE_PHOTO, "profile_photo");
     }
 
     public void setEmailId(String emailId) {
