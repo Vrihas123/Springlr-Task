@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "31047130023",
+    "firebase_url": "https://springlrtask-27b98.firebaseio.com",
+    "project_id": "springlrtask-27b98",
+    "storage_bucket": "springlrtask-27b98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31047130023:android:d86a9c14d0b63df0",
+        "android_client_info": {
+          "package_name": "com.example.example.example.example.vrihas.task.springlr.springlrtask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31047130023-aja7ocrscgr73s297efirsmpmgesemfo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.example.example.example.vrihas.task.springlr.springlrtask",
+            "certificate_hash": "d6abe88cadf9180686bf2a3f032ceb8e0c6c18ed"
+          }
+        },
+        {
+          "client_id": "31047130023-0r0nplduph37e5onl4n4evg7t7pvjkib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBW17HbTk_50eaXxN7Y3hpY9IFZE50MAic"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31047130023-0r0nplduph37e5onl4n4evg7t7pvjkib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

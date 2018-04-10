@@ -5,7 +5,10 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/focus</item>
+        <item name="colorControlNormal">@color/focus</item>
+        <item name="colorControlActivated">@color/focus</item>
+        <item name="colorControlHighlight">@color/focus</item>
     </style>
 
 </resources>

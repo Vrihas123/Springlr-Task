@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Springlr Task</string>
+    <string name="facebook_app_id">159390191395833</string>
+    <string name="fb_login_protocol_scheme">fb159390191395833</string>
+
+    <string name="hint_name">Name</string>
+    <string name="hint_mobile">Contact No (10 digits)</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_address">Address</string>
+    <string name="err_msg_name">Enter your full name</string>
+    <string name="err_msg_mobile">Enter your contact number</string>
+    <string name="err_msg_mobile_digits">The contact number must be of 10 digits.</string>
+    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_msg_address">Enter the address</string>
 </resources>
